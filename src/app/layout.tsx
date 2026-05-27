@@ -8,7 +8,7 @@ import "./webflow-overrides.css";
 import { DevLinkProvider } from "@webflow/DevLinkProvider";
 import { CustomCode } from "@webflow/global/CustomCode";
 import { NavMain } from "@webflow/nav/NavMain";
-import { Footer } from "@webflow/layout/Footer";
+import { SiteFooter } from "@/components/SiteFooter";
 
 export const metadata: Metadata = {
   title: "Public Intel — detections.ai",
@@ -37,7 +37,7 @@ export default function RootLayout({
           <CustomCode />
           <NavMain />
           {children}
-          <Footer />
+          <SiteFooter />
         </DevLinkProvider>
       </body>
     </html>
