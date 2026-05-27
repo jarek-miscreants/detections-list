@@ -43,6 +43,20 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Sticky footer: fill at least the viewport and push the footer to the bottom
+   when page content is short. */
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.iex-shell {
+  flex: 1 0 auto;
+}
+.site-footer {
+  flex: 0 0 auto;
+}
+
 .iex-shell {
   display: grid;
   grid-template-columns: 280px 1fr;
