@@ -1,0 +1,8 @@
+# Copy to .dev.vars (git-ignored) for local development.
+# These are read by Wrangler/OpenNext during `npm run preview` and `next dev`.
+#
+# The resource center pulls intel from the community Next.js app's read API.
+# Until that contract exists, the app serves mock data and these are unused.
+
+COMMUNITY_API_URL=
+COMMUNITY_API_KEY=

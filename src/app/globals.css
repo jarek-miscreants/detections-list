@@ -1,49 +1,370 @@
+/* ---------------------------------------------------------------------------
+   Detections AI — Resource Center (Public Intel)
+   Tokens mirror the Webflow site's --swatch palette so this standalone Cloud
+   app matches brand. When embedded under the main domain these can later be
+   aliased to Webflow's injected variables; for now they're defined locally.
+   --------------------------------------------------------------------------- */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  --swatch--dark: #1a1716;
+  --swatch--dark-2: #313033;
+  --swatch--brand: #f3b540;
+  --swatch--brand-deep: #c68f2a;
+  --swatch--pure-white: #f4f2e7;
+  --swatch--green: #446f46;
+  --swatch--blue: #2866cb;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html {
-  height: 100%;
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --bg: var(--swatch--pure-white);
+  --panel: #ffffff;
+  --ink: var(--swatch--dark);
+  --ink-faded: #67655e;
+  --ink-muted: #aaadb0;
+  --border: rgba(26, 23, 22, 0.1);
+  --border-strong: rgba(26, 23, 22, 0.16);
+  --accent: var(--swatch--brand);
+  --accent-deep: var(--swatch--brand-deep);
+  --hover-bg: rgba(243, 181, 64, 0.06);
+  --row-hover: rgba(26, 23, 22, 0.03);
 }
 
 * {
   box-sizing: border-box;
-  padding: 0;
-  margin: 0;
 }
 
-a {
-  color: inherit;
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "degular-variable", -apple-system, system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+}
+
+.iex-shell {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 24px;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 32px;
+}
+
+/* Filter sidebar */
+.iex-filters {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  align-self: start;
+  position: sticky;
+  top: 24px;
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+}
+.iex-search {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--ink);
+  background: var(--bg);
+  margin-bottom: 20px;
+}
+.iex-search:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: -1px;
+}
+.iex-facet {
+  border-top: 1px solid var(--border);
+  padding: 16px 0;
+}
+.iex-facet:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+.iex-facet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-faded);
+  margin-bottom: 12px;
+}
+.iex-facet-items {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.iex-facet-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--ink);
+  cursor: pointer;
+}
+.iex-facet-item input[type="checkbox"] {
+  width: 14px;
+  height: 14px;
+  margin: 0;
+  accent-color: var(--accent-deep);
+}
+.iex-facet-item .count {
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--ink-muted);
+  font-variant-numeric: tabular-nums;
+}
+.iex-facet-more {
+  margin-top: 8px;
+  padding: 0;
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-size: 12px;
+  color: var(--accent-deep);
+  cursor: pointer;
+  text-align: left;
+}
+
+/* Main pane */
+.iex-main {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+.iex-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4px;
+}
+.iex-result-count {
+  font-size: 13px;
+  color: var(--ink-faded);
+}
+.iex-result-count strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+.iex-sort {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--ink-faded);
+}
+.iex-sort select {
+  padding: 6px 10px;
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--ink);
+  background: var(--panel);
+  cursor: pointer;
+}
+
+/* Table */
+.iex-table-wrap {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+thead th {
+  text-align: left;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-muted);
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border-strong);
+  background: var(--bg);
+}
+tbody td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+tbody tr:last-child td {
+  border-bottom: none;
+}
+tbody tr:hover {
+  background: var(--row-hover);
+}
+
+.source-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--ink-faded);
+}
+.source-logo {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  background: var(--bg);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--ink-faded);
+  flex-shrink: 0;
+}
+.contributor-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--ink);
+  font-size: 11px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.avatar.green {
+  background: var(--swatch--green);
+  color: var(--swatch--pure-white);
+}
+.avatar.blue {
+  background: var(--swatch--blue);
+  color: var(--swatch--pure-white);
+}
+.avatar.dark {
+  background: var(--swatch--dark);
+  color: var(--swatch--pure-white);
+}
+.contributor-name {
+  font-size: 13px;
+  color: var(--ink);
+  font-weight: 500;
+}
+.title-cell {
+  max-width: 580px;
+}
+.title-main {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 2px;
+}
+.title-desc {
+  font-size: 13px;
+  color: var(--ink-faded);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 560px;
+}
+.ai-spark {
+  color: var(--accent-deep);
+  font-size: 12px;
+}
+.updated-cell {
+  font-size: 13px;
+  color: var(--ink-faded);
+  white-space: nowrap;
+}
+.type-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: var(--bg);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-faded);
+  border: 1px solid var(--border);
+}
+.type-chip.intel {
+  background: rgba(40, 102, 203, 0.08);
+  color: var(--swatch--blue);
+  border-color: rgba(40, 102, 203, 0.16);
+}
+
+.iex-empty {
+  padding: 48px 16px;
+  text-align: center;
+  color: var(--ink-muted);
+  font-size: 14px;
+}
+
+/* Pagination */
+.iex-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  padding: 16px 0;
+  font-size: 13px;
+}
+.iex-page-btn {
+  min-width: 32px;
+  height: 32px;
+  padding: 0 10px;
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+  background: var(--panel);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   text-decoration: none;
 }
+.iex-page-btn.active {
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
+}
+.iex-page-btn:hover:not(.active) {
+  background: var(--hover-bg);
+}
+.iex-page-btn[aria-disabled] {
+  opacity: 0.4;
+  pointer-events: none;
+}
+.iex-page-info {
+  color: var(--ink-muted);
+  margin: 0 12px;
+}
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+@media (max-width: 860px) {
+  .iex-shell {
+    grid-template-columns: 1fr;
+    padding: 16px;
+  }
+  .iex-filters {
+    position: static;
+    max-height: none;
   }
 }

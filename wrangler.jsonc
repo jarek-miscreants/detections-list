@@ -1,0 +1,17 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "detections-resources",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2025-05-05",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "binding": "ASSETS",
+    "directory": ".open-next/assets"
+  },
+  "observability": {
+    "enabled": true
+  }
+  // Secrets (e.g. COMMUNITY_API_KEY) are NOT stored here.
+  // Local dev: put them in .dev.vars.  Production: Webflow Cloud env settings
+  // (or `wrangler secret put COMMUNITY_API_KEY` if deploying via wrangler directly).
+}

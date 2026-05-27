@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# detections.ai — Resource Center (Public Intel)
 
-## Getting Started
+Public-facing, faceted threat-intel resource center for detections.ai. Built as
+a **Next.js app deployed to Webflow Cloud** (Cloudflare Workers via the OpenNext
+adapter), mounted as a subpath of the main marketing site.
 
-First, run the development server:
+## Why a Webflow Cloud app instead of Webflow CMS
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+The dataset (~6,500+ records, growing daily; facets across 142+ threat actors,
+314+ CVEs, 89+ malware families, 87+ MITRE techniques, 64+ sources, 211+
+contributors) exceeds what Webflow CMS can model — the 5-reference-field cap and
+item ceiling rule it out, and the freshness/faceting needs an actual search
+backend. Hosting the app on Webflow Cloud keeps it on the main domain (one nav,
+consolidated SEO) with SSR/ISR for crawlability, while the data stays in its
+single source of truth (the community app) rather than being mirrored into CMS.
+
+## Architecture
+
+```
+Marketing site (Webflow)
+  └─ /resources  ──►  THIS app (Next.js on Webflow Cloud / Cloudflare Workers)
+                        └─ getIntel()  ──►  community intel read API (AWS, separate dev)
+Community app (Next.js, AWS)  ──►  reverse-proxied at its own paths (separate concern)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The **data source seam** is `src/lib/intel-source.ts`. Today it serves mock data
+(`src/lib/mock-data.ts`) and filters/facets in-process. When the community app
+exposes a read API, swap the body of `getIntel()` — see the comment block there
+for the two supported shapes (thin proxy vs. hydrate-then-compute). The thin
+proxy (community backend does search/facet/paginate) is recommended at scale.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Mount path
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+`/resources` — configured in **three** places that must stay in sync:
 
-## Learn More
+- `next.config.ts` → `basePath` + `assetPrefix`
+- the **Mount path** you set when connecting this repo in the Webflow Cloud UI
 
-To learn more about Next.js, take a look at the following resources:
+## Project layout
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+src/app/        layout, global CSS, the page (server component, SSR)
+src/components/ IntelFilters (client), SortControl (client), IntelTable, Pagination
+src/lib/        types, facets config, query/filter/facet logic, url helpers, data seam, mock data
+webflow.json    declares the framework to Webflow Cloud
+open-next.config.ts / wrangler.jsonc / cloudflare-env.d.ts   Cloudflare/OpenNext config
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Facets are driven entirely by `src/lib/facets.ts` — add a facet there and it
+flows through filtering, counts, URL params, and the sidebar automatically.
 
-## Deploy on Vercel
+## Scripts
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm run dev      # local Next dev server (mock data)
+npm run build    # production build (what Webflow Cloud runs)
+npm run preview  # build + run on the local Cloudflare (workerd) runtime
+npm run deploy   # build + deploy via wrangler (Webflow Cloud normally handles deploy)
+npm run cf-typegen   # regenerate cloudflare-env.d.ts binding types
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Environment
+
+Local: copy `.dev.vars.example` → `.dev.vars`. Production: set in Webflow Cloud
+env settings. Vars: `COMMUNITY_API_URL`, `COMMUNITY_API_KEY` (server-side only —
+never exposed to the browser). Unused until the community API is wired up.
+
+## Known setup note (Windows)
+
+Cloud deps were installed with `--ignore-scripts` to work around an esbuild
+version-check clash between Next and Wrangler. The production build (`npm run
+build`) is unaffected. `npm run preview` needs the local `workerd` binary
+(`@cloudflare/workerd-windows-64`); install it if you want to test the edge
+runtime locally. Deployment through Webflow Cloud's own pipeline does not depend
+on local workerd.

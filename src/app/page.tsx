@@ -1,65 +1,44 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import { IntelFilters } from "@/components/IntelFilters";
+import { IntelTable } from "@/components/IntelTable";
+import { Pagination } from "@/components/Pagination";
+import { SortControl } from "@/components/SortControl";
+import { getIntel } from "@/lib/intel-source";
+import { parseQuery } from "@/lib/query";
 
-export default function Home() {
+// Faceted list rendered on the server for crawlability; revalidate keeps it
+// fresh once wired to the community API.
+export const revalidate = 300;
+
+export default async function IntelExchangePage({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}) {
+  const query = parseQuery(await searchParams);
+  const result = await getIntel(query);
+
+  const start = result.total === 0 ? 0 : (result.page - 1) * result.pageSize + 1;
+  const end = Math.min(result.page * result.pageSize, result.total);
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="iex-shell">
+      <IntelFilters facets={result.facets} query={query} />
+
+      <main className="iex-main">
+        <div className="iex-toolbar">
+          <div className="iex-result-count">
+            Showing{" "}
+            <strong>
+              {start.toLocaleString()}–{end.toLocaleString()}
+            </strong>{" "}
+            of <strong>{result.total.toLocaleString()}</strong> results
+          </div>
+          <SortControl value={query.sort} />
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+
+        <IntelTable items={result.items} />
+
+        <Pagination query={query} total={result.total} />
       </main>
     </div>
   );
