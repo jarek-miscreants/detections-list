@@ -3,7 +3,10 @@ import type { Metadata } from "next";
 // layers, so our unlayered globals.css below still wins for the data view.
 import "@webflow/css/global.css";
 import "./globals.css";
+// Re-adds Webflow Variable Modes (e.g. .theme-dark) that DevLink doesn't export.
+import "./webflow-overrides.css";
 import { DevLinkProvider } from "@webflow/DevLinkProvider";
+import { CustomCode } from "@webflow/global/CustomCode";
 import { NavMain } from "@webflow/nav/NavMain";
 import { Footer } from "@webflow/layout/Footer";
 
@@ -29,6 +32,9 @@ export default function RootLayout({
             exported Nav/Footer. Links keep DevLink's default <a> tags so they
             resolve against the main site, not this app's /intel-exchange base. */}
         <DevLinkProvider>
+          {/* Injects the site's framework <style> (grid system, resets, root
+              tokens) that the exported Webflow components depend on. */}
+          <CustomCode />
           <NavMain />
           {children}
           <Footer />

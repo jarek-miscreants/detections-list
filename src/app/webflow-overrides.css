@@ -1,0 +1,51 @@
+/* ---------------------------------------------------------------------------
+   Webflow Variable Mode overrides that DevLink does not export.
+
+   DevLink exports component class styles but NOT Webflow's "Variable Mode"
+   rules (e.g. the `.theme-dark` mode that flips the theme tokens to dark).
+   Without this, anything tagged `theme-dark` — notably the footer — falls back
+   to the light defaults. Values copied verbatim from the published site's
+   webflow.shared CSS. Keep in sync if the brand theme changes.
+   --------------------------------------------------------------------------- */
+.theme-dark {
+  background-color: var(--_theme---background);
+  color: var(--_theme---text);
+  --_theme---background: var(--swatch--dark);
+  --_theme---text: var(--swatch--light);
+  --_theme---border: var(--swatch--light-faded);
+  --_theme---background-2: var(--swatch--dark-2);
+  --_theme---button-primary--border: var(--swatch--brand);
+  --_theme---button-primary--background: var(--swatch--brand);
+  --_theme---button-primary--background-hover: var(--swatch--light);
+  --_theme---button-primary--border-hover: var(--swatch--light);
+  --_theme---button-primary--text: var(--swatch--dark);
+  --_theme---button-primary--text-hover: var(--swatch--dark);
+  --_theme---button-secondary--background: var(--swatch--transparent);
+  --_theme---button-secondary--background-hover: var(--swatch--brand);
+  --_theme---button-secondary--text: var(--swatch--light);
+  --_theme---button-secondary--text-hover: var(--swatch--dark);
+  --_theme---button-secondary--border: var(--swatch--light-faded-60);
+  --_theme---button-secondary--border-hover: var(--swatch--brand);
+  --_theme---button-link--color: var(--_theme---text);
+  --_theme---button-link--color-hover: var(--swatch--brand-2);
+  --_theme---eyebrow-bg: var(--swatch--dark);
+  --_theme---selection--background: var(--swatch--light);
+  --_theme---selection--text: var(--swatch--dark);
+}
+
+/* Icon sizing classes used by the footer social link. DevLink dropped these
+   (the social links sit in an unexported CMS Collection List subtree), so the
+   icon falls back to its intrinsic 300px. Values from webflow.shared CSS. */
+.icon-1x1-xsmall {
+  width: var(--_icon-sizes---size);
+  height: var(--_icon-sizes---size);
+  --_icon-sizes---size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.icon-1x1-xsmall svg,
+.icon-1x1-xsmall img {
+  width: 100%;
+  height: 100%;
+}
