@@ -29,6 +29,11 @@ exposes a read API, swap the body of `getIntel()` — see the comment block ther
 for the two supported shapes (thin proxy vs. hydrate-then-compute). The thin
 proxy (community backend does search/facet/paginate) is recommended at scale.
 
+**Going to production:** there is no batch sync — the app reads through to the
+community API at request time and caches at the edge. Full steps (env vars,
+`getIntel` implementation, response contract, caching) are in
+[docs/DATA-SOURCE.md](docs/DATA-SOURCE.md).
+
 ## Mount path
 
 `/intel-exchange` — configured in **two** places that must stay in sync:
