@@ -10,7 +10,7 @@ import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
  * (e.g. https://www.detections.ai/resources). All internal links built with
  * next/link and the router automatically respect basePath.
  */
-const MOUNT_PATH = "/resources";
+const MOUNT_PATH = "/intel-exchange";
 
 const nextConfig: NextConfig = {
   basePath: MOUNT_PATH,

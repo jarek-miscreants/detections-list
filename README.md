@@ -18,7 +18,7 @@ single source of truth (the community app) rather than being mirrored into CMS.
 
 ```
 Marketing site (Webflow)
-  └─ /resources  ──►  THIS app (Next.js on Webflow Cloud / Cloudflare Workers)
+  └─ /intel-exchange  ──►  THIS app (Next.js on Webflow Cloud / Cloudflare Workers)
                         └─ getIntel()  ──►  community intel read API (AWS, separate dev)
 Community app (Next.js, AWS)  ──►  reverse-proxied at its own paths (separate concern)
 ```
@@ -31,10 +31,10 @@ proxy (community backend does search/facet/paginate) is recommended at scale.
 
 ## Mount path
 
-`/resources` — configured in **three** places that must stay in sync:
+`/intel-exchange` — configured in **two** places that must stay in sync:
 
 - `next.config.ts` → `basePath` + `assetPrefix`
-- the **Mount path** you set when connecting this repo in the Webflow Cloud UI
+- the **Mount path** set on the environment when connecting this repo in Webflow Cloud
 
 ## Project layout
 
