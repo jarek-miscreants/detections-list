@@ -81,7 +81,7 @@ export function NavMain({ variant = "Light" }) {
                 button={false}
                 className={`nav_logo_wrap ${_activeStyleVariant}`}
                 options={{
-                  href: "#",
+                  href: "/",
                 }}
               >
                 <Logo style={{ "maxWidth": "10rem" }} />
@@ -145,7 +145,7 @@ export function NavMain({ variant = "Light" }) {
                 button={false}
                 className={`nav_logo_wrap ${_activeStyleVariant}`}
                 options={{
-                  href: "#",
+                  href: "/",
                 }}
               >
                 <Logo style={{ "maxWidth": "14rem" }} />
