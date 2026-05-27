@@ -49,3 +49,12 @@
   width: 100%;
   height: 100%;
 }
+
+/* Nav button spacing. The "Request Code" item uses Webflow's `.mx-4` spacing
+   utility (margin-inline: var(--_spacing---space--4) = 23px), but that spacing
+   token isn't resolved by DevLink, so the two nav buttons render flush. Restore
+   it with a 23px fallback. */
+.nav_buttons_item.mx-4 {
+  margin-left: var(--_spacing---space--4, 23px);
+  margin-right: var(--_spacing---space--4, 23px);
+}
