@@ -381,15 +381,18 @@ tbody tr:hover {
   line-height: 1.5;
 }
 .site-footer__inner {
-  max-width: 1600px;
+  /* Same centered container as the page content (.iex-shell): 1440px = 90rem
+     at a 16px root. Used as px because this app's root font-size is 14px. */
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 80px clamp(24px, 3vw, 44px) 40px;
+  padding: 80px 32px 40px;
 }
 .site-footer__top {
-  display: flex;
-  justify-content: space-between;
+  /* 12-col split like the live footer: brand ~7 cols, Company starts at ~58%. */
+  display: grid;
+  grid-template-columns: 7fr 5fr;
   gap: 48px;
-  flex-wrap: wrap;
+  align-items: start;
 }
 .site-footer__brand {
   display: flex;
@@ -492,7 +495,7 @@ tbody tr:hover {
     padding-top: 48px;
   }
   .site-footer__top {
-    flex-direction: column;
+    grid-template-columns: 1fr;
     gap: 40px;
   }
   .site-footer__tagline {
