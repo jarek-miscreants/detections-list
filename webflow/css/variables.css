@@ -1,0 +1,697 @@
+:root {
+  --_theme---background: var(--swatch--pure-white);
+  --_text-style---font-family: var(--_typography---font--primary-family);
+  --_theme---text: var(--swatch--dark);
+  --_text-style---font-size: var(--_typography---font-size--text-main);
+  --_text-style---line-height: var(--_typography---line-height--1-5);
+  --_typography---h3--margin-top\<deleted\|variable-272c4d98-2b50-df10-9cb6-51a2ec627469\>: var(
+    --_typography---all-headings--heading-margin-top\<deleted\|variable-e1ca1b70-8d4b-3a58-4486-f621668e09ce\>
+  );
+  --_typography---h3--margin-bottom\<deleted\|variable-b16beec0-0d31-0b07-c59e-a3158375c820\>: var(
+    --_typography---all-headings--heading-margin-bottom\<deleted\|variable-fe43f617-f6f7-5a67-e5cc-0068c155012c\>
+  );
+  --_typography---h3--font-family\<deleted\|variable-0572a7cb-914b-5e45-cd13-4c30a3141326\>: var(
+    --_typography---all-headings--heading-font-family\<deleted\|variable-318d6203-a3ac-e279-8042-70974834804b\>
+  );
+  --_typography---h3--font-size\<deleted\|variable-14e7fa82-84b9-b937-de05-f88bdaaa2f43\>: clamp(
+    1.52 * 1rem,
+    (
+      (
+          1.52 -
+            (
+              (1.95 - 1.52) / (var(--site--max) - var(--site--min)) *
+                var(--site--min)
+            )
+        ) * 1rem + ((1.95 - 1.52) / (var(--site--max) - var(--site--min))) *
+        100vw
+    ),
+    1.95 * 1rem
+  );
+  --_typography---h3--line-height\<deleted\|variable-45e38ba5-9ef2-04d0-e68d-2ff7fd20df4e\>: var(
+    --_typography---line-height--1-3
+  );
+  --_typography---h4--margin-top\<deleted\|variable-9167b27d-2b25-968b-00e2-44c91d94c40b\>: var(
+    --_typography---all-headings--heading-margin-top\<deleted\|variable-e1ca1b70-8d4b-3a58-4486-f621668e09ce\>
+  );
+  --_typography---h4--margin-bottom\<deleted\|variable-163cb23a-8096-8148-af3b-632dcfe64550\>: var(
+    --_typography---all-headings--heading-margin-bottom\<deleted\|variable-fe43f617-f6f7-5a67-e5cc-0068c155012c\>
+  );
+  --_typography---h4--font-family\<deleted\|variable-89d46f8e-b7ed-1db7-98e9-acd8cdf8957d\>: var(
+    --_typography---all-headings--heading-font-family\<deleted\|variable-318d6203-a3ac-e279-8042-70974834804b\>
+  );
+  --_typography---h4--font-size\<deleted\|variable-45571654-5d81-5968-df03-daefa15f73b7\>: clamp(
+    1.32 * 1rem,
+    (
+      (
+          1.32 -
+            (
+              (1.56 - 1.32) / (var(--site--max) - var(--site--min)) *
+                var(--site--min)
+            )
+        ) * 1rem + ((1.56 - 1.32) / (var(--site--max) - var(--site--min))) *
+        100vw
+    ),
+    1.56 * 1rem
+  );
+  --_typography---h1--margin-top\<deleted\|variable-aabc9025-ba0f-2091-3fc2-93dda8d5de92\>: var(
+    --_spacing---space--5
+  );
+  --_typography---h1--margin-bottom\<deleted\|variable-b8dce7d0-7204-49ce-3b6f-895249ee2a31\>: var(
+    --_spacing---space--3
+  );
+  --_typography---h1--font-family\<deleted\|variable-a923aa4a-7bbb-5fbf-e792-a7c43f74665b\>: var(
+    --_typography---all-headings--heading-font-family\<deleted\|variable-318d6203-a3ac-e279-8042-70974834804b\>
+  );
+  --_typography---h1--font-size\<deleted\|variable-1b083426-78df-8aa7-a18f-79ae2ec4adbb\>: clamp(
+    2.01 * 1rem,
+    (
+      (
+          2.01 -
+            (
+              (3 - 2.01) / (var(--site--max) - var(--site--min)) *
+                var(--site--min)
+            )
+        ) * 1rem + ((3 - 2.01) / (var(--site--max) - var(--site--min))) * 100vw
+    ),
+    3 * 1rem
+  );
+  --_typography---h1--line-height\<deleted\|variable-549be45b-4fc8-751f-84b0-4d88a124bd1b\>: var(
+    --_typography---line-height--1-3
+  );
+  --_typography---h2--margin-top\<deleted\|variable-1cfaade9-2626-e411-a0df-7c4800291809\>: var(
+    --_spacing---space--4
+  );
+  --_typography---h2--margin-bottom\<deleted\|variable-90811ea4-c9a9-f50f-9867-98bd6a5a2810\>: var(
+    --_spacing---space--3
+  );
+  --_typography---h2--font-family\<deleted\|variable-19c148da-121d-1c0b-2e7c-78ca054797eb\>: var(
+    --_typography---all-headings--heading-font-family\<deleted\|variable-318d6203-a3ac-e279-8042-70974834804b\>
+  );
+  --_typography---h2--font-size\<deleted\|variable-525a7a24-8886-0e73-470e-3d6650dfed19\>: clamp(
+    1.75 * 1rem,
+    (
+      (
+          1.75 -
+            (
+              (2.44 - 1.75) / (var(--site--max) - var(--site--min)) *
+                var(--site--min)
+            )
+        ) * 1rem + ((2.44 - 1.75) / (var(--site--max) - var(--site--min))) *
+        100vw
+    ),
+    2.44 * 1rem
+  );
+  --_typography---h2--line-height\<deleted\|variable-32bde638-4a2a-c3cd-b3c5-fb98f0845bf4\>: var(
+    --_typography---line-height--1-3
+  );
+  --_typography---text-main--margin-top\<deleted\|variable-27588b27-40b4-b407-13dc-45f868e07dc8\>: var(
+    --_spacing---space--2
+  );
+  --_typography---text-main--margin-bottom\<deleted\|variable-3dbbb694-dd1a-32a4-d262-426dcaeb5280\>: var(
+    --_spacing---space--2
+  );
+  --site--column-count: 12;
+  --_text-style---font-weight: var(--_typography---primary-regular);
+  --swatch--header-highlight: hsla(218, 98.36%, 59.27%, 1);
+  --_typography---font--mono-family: Inconsolata, monospace;
+  --_typography---line-height--1: 1;
+  --_spacing---section-space--none: var(--value-location--fluid-builder);
+  --_spacing---section-space--small: clamp(
+    3 * 1rem,
+    (
+      (3 - ((5 - 3) / (var(--site--max) - var(--site--min)) * var(--site--min))) *
+        1rem + ((5 - 3) / (var(--site--max) - var(--site--min))) * 100vw
+    ),
+    5 * 1rem
+  );
+  --_spacing---section-space--main: clamp(
+    4 * 1rem,
+    (
+      (4 - ((7 - 4) / (var(--site--max) - var(--site--min)) * var(--site--min))) *
+        1rem + ((7 - 4) / (var(--site--max) - var(--site--min))) * 100vw
+    ),
+    7 * 1rem
+  );
+  --_spacing---section-space--large: clamp(
+    5.5 * 1rem,
+    (
+      (
+          5.5 -
+            (
+              (10 - 5.5) / (var(--site--max) - var(--site--min)) *
+                var(--site--min)
+            )
+        ) * 1rem + ((10 - 5.5) / (var(--site--max) - var(--site--min))) * 100vw
+    ),
+    10 * 1rem
+  );
+  --_spacing---section-space--page-top: clamp(
+    7 * 1rem,
+    (
+      (
+          7 -
+            (
+              (14 - 7) / (var(--site--max) - var(--site--min)) *
+                var(--site--min)
+            )
+        ) * 1rem + ((14 - 7) / (var(--site--max) - var(--site--min))) * 100vw
+    ),
+    14 * 1rem
+  );
+  --_spacing---section-space--xsmall: clamp(
+    2 * 1rem,
+    (
+      (2 - ((3 - 2) / (var(--site--max) - var(--site--min)) * var(--site--min))) *
+        1rem + ((3 - 2) / (var(--site--max) - var(--site--min))) * 100vw
+    ),
+    3 * 1rem
+  );
+  --swatch--blue: #2866cb;
+  --swatch--light-2: #cfcbb5;
+  --_theme---background-2: var(--swatch--light);
+  --_theme---button-primary--background: var(--swatch--brand);
+  --_trigger---on: 1;
+  --_theme---button-primary--background-hover: var(--swatch--dark-2);
+  --_trigger---off: 0;
+  --_theme---button-primary--border: var(--swatch--brand);
+  --_theme---button-primary--border-hover: var(--swatch--dark-2);
+  --_theme---button-primary--text: var(--swatch--dark);
+  --_theme---button-primary--text-hover: var(--swatch--light);
+  --_theme---button-secondary--background: var(--swatch--light);
+  --_theme---button-secondary--background-hover: var(--swatch--brand);
+  --_theme---button-secondary--text: var(--_theme---text);
+  --_theme---button-secondary--text-hover: var(--swatch--dark);
+  --_theme---button-secondary--border: var(--swatch--dark);
+  --_theme---button-secondary--border-hover: var(--swatch--brand);
+  --swatch--dark: #1a1716;
+  --swatch--light: #dcd9ca;
+  --swatch--brand: #f3b540;
+  --radius--small: 0.5rem;
+  --_typography---font--primary-family: degular-variable, sans-serif;
+  --_spacing---space--3: clamp(
+    0.75 * 1rem,
+    (
+      (
+          0.75 -
+            (
+              (1 - 0.75) / (var(--site--max) - var(--site--min)) *
+                var(--site--min)
+            )
+        ) * 1rem + ((1 - 0.75) / (var(--site--max) - var(--site--min))) * 100vw
+    ),
+    1 * 1rem
+  );
+  --nav--nav-bg: var(--swatch--dark);
+  --nav--height-total: var(--nav--height);
+  --nav--spacing-outer-vertical: var(--_spacing---space--1);
+  --nav--text-color: var(--swatch--light);
+  --_spacing---space--2: clamp(
+    0.5 * 1rem,
+    (
+      (
+          0.5 -
+            (
+              (0.75 - 0.5) / (var(--site--max) - var(--site--min)) *
+                var(--site--min)
+            )
+        ) * 1rem + ((0.75 - 0.5) / (var(--site--max) - var(--site--min))) *
+        100vw
+    ),
+    0.75 * 1rem
+  );
+  --nav--spacing-inner-horizontal: var(--_spacing---space--4);
+  --_spacing---space--6: clamp(
+    2 * 1rem,
+    (
+      (2 - ((3 - 2) / (var(--site--max) - var(--site--min)) * var(--site--min))) *
+        1rem + ((3 - 2) / (var(--site--max) - var(--site--min))) * 100vw
+    ),
+    3 * 1rem
+  );
+  --_typography---font-size--text-small: 0.875rem;
+  --_spacing---space--1: clamp(
+    0.25 * 1rem,
+    (
+      (
+          0.25 -
+            (
+              (0.5 - 0.25) / (var(--site--max) - var(--site--min)) *
+                var(--site--min)
+            )
+        ) * 1rem + ((0.5 - 0.25) / (var(--site--max) - var(--site--min))) *
+        100vw
+    ),
+    0.5 * 1rem
+  );
+  --_gap---size: var(--site--gutter);
+  --_typography---blog--h3: clamp(
+    1.424 * 1rem,
+    (
+      (
+          1.424 -
+            (
+              (1.728 - 1.424) / (var(--site--max) - var(--site--min)) *
+                var(--site--min)
+            )
+        ) * 1rem + ((1.728 - 1.424) / (var(--site--max) - var(--site--min))) *
+        100vw
+    ),
+    1.728 * 1rem
+  );
+  --site--max: 100;
+  --site--min: 20;
+  --_typography---blog--h4: clamp(
+    1.266 * 1rem,
+    (
+      (
+          1.266 -
+            (
+              (1.44 - 1.266) / (var(--site--max) - var(--site--min)) *
+                var(--site--min)
+            )
+        ) * 1rem + ((1.44 - 1.266) / (var(--site--max) - var(--site--min))) *
+        100vw
+    ),
+    1.44 * 1rem
+  );
+  --_text-style---margin-top: var(--_spacing---space--4);
+  --_text-style---margin-bottom: var(--_spacing---space--4);
+  --_typography---blog--h1: clamp(
+    2.01 * 1rem,
+    (
+      (
+          2.01 -
+            (
+              (3 - 2.01) / (var(--site--max) - var(--site--min)) *
+                var(--site--min)
+            )
+        ) * 1rem + ((3 - 2.01) / (var(--site--max) - var(--site--min))) * 100vw
+    ),
+    3 * 1rem
+  );
+  --_typography---blog--h2: clamp(
+    1.602 * 1rem,
+    (
+      (
+          1.602 -
+            (
+              (2.074 - 1.602) / (var(--site--max) - var(--site--min)) *
+                var(--site--min)
+            )
+        ) * 1rem + ((2.074 - 1.602) / (var(--site--max) - var(--site--min))) *
+        100vw
+    ),
+    2.074 * 1rem
+  );
+  --_typography---blog--h5: clamp(
+    1.125 * 1rem,
+    (
+      (
+          1.125 -
+            (
+              (1.2 - 1.125) / (var(--site--max) - var(--site--min)) *
+                var(--site--min)
+            )
+        ) * 1rem + ((1.2 - 1.125) / (var(--site--max) - var(--site--min))) *
+        100vw
+    ),
+    1.2 * 1rem
+  );
+  --_typography---blog--h6: clamp(
+    1 * 1rem,
+    (
+      (1 - ((1 - 1) / (var(--site--max) - var(--site--min)) * var(--site--min))) *
+        1rem + ((1 - 1) / (var(--site--max) - var(--site--min))) * 100vw
+    ),
+    1 * 1rem
+  );
+  --_spacing---space--8: clamp(
+    4 * 1rem,
+    (
+      (4 - ((6 - 4) / (var(--site--max) - var(--site--min)) * var(--site--min))) *
+        1rem + ((6 - 4) / (var(--site--max) - var(--site--min))) * 100vw
+    ),
+    6 * 1rem
+  );
+  --_spacing---space--7: clamp(
+    3 * 1rem,
+    (
+      (3 - ((4 - 3) / (var(--site--max) - var(--site--min)) * var(--site--min))) *
+        1rem + ((4 - 3) / (var(--site--max) - var(--site--min))) * 100vw
+    ),
+    4 * 1rem
+  );
+  --_spacing---space--5: clamp(
+    1.5 * 1rem,
+    (
+      (
+          1.5 -
+            (
+              (2 - 1.5) / (var(--site--max) - var(--site--min)) *
+                var(--site--min)
+            )
+        ) * 1rem + ((2 - 1.5) / (var(--site--max) - var(--site--min))) * 100vw
+    ),
+    2 * 1rem
+  );
+  --_spacing---space--4: clamp(
+    1 * 1rem,
+    (
+      (
+          1 -
+            (
+              (1.5 - 1) / (var(--site--max) - var(--site--min)) *
+                var(--site--min)
+            )
+        ) * 1rem + ((1.5 - 1) / (var(--site--max) - var(--site--min))) * 100vw
+    ),
+    1.5 * 1rem
+  );
+  --_theme---border: var(--swatch--dark-faded);
+  --radius--main: 1rem;
+  --swatch--light-faded: color-mix(
+    in srgb,
+    var(--swatch--light) 10%,
+    transparent
+  );
+  --_theme---button-link--color: var(--_theme---text);
+  --_theme---button-link--color-hover: var(--swatch--brand);
+  --_column-count---value: 1;
+  --size--2rem: 2rem;
+  --_icon-sizes---size: 1rem;
+  --radius--round: 100vw;
+  --swatch--light-faded-60: color-mix(
+    in srgb,
+    var(--swatch--light) 60%,
+    transparent
+  );
+  --swatch--pure-white: #f4f2e7;
+  --site--gutter: 1rem;
+  --_responsive---large: 1;
+  --_responsive---medium: 0;
+  --_responsive---small: 0;
+  --_responsive---xsmall: 0;
+  --site--column-width: calc(
+    (
+        min(var(--max-width--main), 100% - var(--site--margin) * 2) -
+          (var(--site--gutter) * (var(--site--column-count) - 1))
+      ) / var(--site--column-count)
+  );
+  --container--small: 60rem;
+  --site--margin: clamp(
+    1 * 1rem,
+    (
+      (1 - ((3 - 1) / (var(--site--max) - var(--site--min)) * var(--site--min))) *
+        1rem + ((3 - 1) / (var(--site--max) - var(--site--min))) * 100vw
+    ),
+    3 * 1rem
+  );
+  --size--0rem: 0rem;
+  --swatch--transparent: hsla(0, 0%, 100%, 0);
+  --_state---false: 0;
+  --radius--xsmall: 0.25rem;
+  --site--content-padding: clamp(
+    1 * 1rem,
+    (
+      (1 - ((3 - 1) / (var(--site--max) - var(--site--min)) * var(--site--min))) *
+        1rem + ((3 - 1) / (var(--site--max) - var(--site--min))) * 100vw
+    ),
+    3 * 1rem
+  );
+  --_theme---eyebrow-bg: var(--swatch--pure-white);
+  --swatch--dark-2: hsla(240, 1.49%, 19.71%, 1);
+  --swatch--green: #446f46;
+  --_paddings---padding-tiny: clamp(
+    0.4 * 1rem,
+    (
+      (
+          0.4 -
+            (
+              (0.75 - 0.4) / (var(--site--max) - var(--site--min)) *
+                var(--site--min)
+            )
+        ) * 1rem + ((0.75 - 0.4) / (var(--site--max) - var(--site--min))) *
+        100vw
+    ),
+    0.75 * 1rem
+  );
+  --swatch--dark-faded: color-mix(
+    in srgb,
+    var(--swatch--dark) 10%,
+    transparent
+  );
+  --swatch--brand-2: #4bfd95;
+  --swatch--light-300: #e8e6db;
+  --swatch--brand-text: var(--swatch--dark);
+  --_state---true: 1;
+  --_paddings---padding-small: clamp(
+    0.6 * 1rem,
+    (
+      (
+          0.6 -
+            (
+              (1 - 0.6) / (var(--site--max) - var(--site--min)) *
+                var(--site--min)
+            )
+        ) * 1rem + ((1 - 0.6) / (var(--site--max) - var(--site--min))) * 100vw
+    ),
+    1 * 1rem
+  );
+  --_button-style---background: var(--_theme---button-primary--background);
+  --_typography---font--secondary-family: degular-variable, sans-serif;
+  --_paddings---padding-main: clamp(
+    1 * 1rem,
+    (
+      (1 - ((2 - 1) / (var(--site--max) - var(--site--min)) * var(--site--min))) *
+        1rem + ((2 - 1) / (var(--site--max) - var(--site--min))) * 100vw
+    ),
+    2 * 1rem
+  );
+  --_button-style---text: var(--swatch--dark);
+  --_paddings---padding-large: clamp(
+    1.25 * 1rem,
+    (
+      (
+          1.25 -
+            (
+              (3 - 1.25) / (var(--site--max) - var(--site--min)) *
+                var(--site--min)
+            )
+        ) * 1rem + ((3 - 1.25) / (var(--site--max) - var(--site--min))) * 100vw
+    ),
+    3 * 1rem
+  );
+  --_typography---font-size--display: clamp(
+    3 * 1rem,
+    (
+      (
+          3 -
+            (
+              (6.5 - 3) / (var(--site--max) - var(--site--min)) *
+                var(--site--min)
+            )
+        ) * 1rem + ((6.5 - 3) / (var(--site--max) - var(--site--min))) * 100vw
+    ),
+    6.5 * 1rem
+  );
+  --_button-style---border: var(--_theme---button-primary--border);
+  --swatch--grid: var(--swatch--light-2);
+  --_typography---font-size--h1: clamp(
+    2.5 * 1rem,
+    (
+      (
+          2.5 -
+            (
+              (4.5 - 2.5) / (var(--site--max) - var(--site--min)) *
+                var(--site--min)
+            )
+        ) * 1rem + ((4.5 - 2.5) / (var(--site--max) - var(--site--min))) * 100vw
+    ),
+    4.5 * 1rem
+  );
+  --_button-style---background-hover: var(
+    --_theme---button-primary--background-hover
+  );
+  --_typography---font-size--h2: clamp(
+    1.75 * 1rem,
+    (
+      (
+          1.75 -
+            (
+              (2.44 - 1.75) / (var(--site--max) - var(--site--min)) *
+                var(--site--min)
+            )
+        ) * 1rem + ((2.44 - 1.75) / (var(--site--max) - var(--site--min))) *
+        100vw
+    ),
+    2.44 * 1rem
+  );
+  --_typography---font-size--h3: clamp(
+    1.52 * 1rem,
+    (
+      (
+          1.52 -
+            (
+              (1.95 - 1.52) / (var(--site--max) - var(--site--min)) *
+                var(--site--min)
+            )
+        ) * 1rem + ((1.95 - 1.52) / (var(--site--max) - var(--site--min))) *
+        100vw
+    ),
+    1.95 * 1rem
+  );
+  --_typography---font-size--h4: clamp(
+    1.32 * 1rem,
+    (
+      (
+          1.32 -
+            (
+              (1.56 - 1.32) / (var(--site--max) - var(--site--min)) *
+                var(--site--min)
+            )
+        ) * 1rem + ((1.56 - 1.32) / (var(--site--max) - var(--site--min))) *
+        100vw
+    ),
+    1.56 * 1rem
+  );
+  --_typography---font-size--h5: clamp(
+    1.15 * 1rem,
+    (
+      (
+          1.15 -
+            (
+              (1.25 - 1.15) / (var(--site--max) - var(--site--min)) *
+                var(--site--min)
+            )
+        ) * 1rem + ((1.25 - 1.15) / (var(--site--max) - var(--site--min))) *
+        100vw
+    ),
+    1.25 * 1rem
+  );
+  --_typography---font-size--h6: clamp(
+    1.14 * 1rem,
+    (
+      (
+          1.14 -
+            (
+              (1.2 - 1.14) / (var(--site--max) - var(--site--min)) *
+                var(--site--min)
+            )
+        ) * 1rem + ((1.2 - 1.14) / (var(--site--max) - var(--site--min))) *
+        100vw
+    ),
+    1.2 * 1rem
+  );
+  --_typography---font-size--text-large: clamp(
+    1.2 * 1rem,
+    (
+      (
+          1.2 -
+            (
+              (1.25 - 1.2) / (var(--site--max) - var(--site--min)) *
+                var(--site--min)
+            )
+        ) * 1rem + ((1.25 - 1.2) / (var(--site--max) - var(--site--min))) *
+        100vw
+    ),
+    1.25 * 1rem
+  );
+  --_typography---font-size--text-main: 1rem;
+  --_typography---font-size--text-tiny: 0.7rem;
+  --_button-style---text-hover: var(--_theme---button-primary--text-hover);
+  --swatch--orange: #c45c33;
+  --_button-style---border-hover: var(--_theme---button-primary--border-hover);
+  --swatch--green-dark: #29432a;
+  --swatch--orange-dark: #76371f;
+  --swatch--blue-dark: #183d7a;
+  --swatch--light-200: #e8e6db;
+  --_card---card--card-bg: white;
+  --_card---card--card-bg-hover: white;
+  --_card---card--card-padding-main: var(--_paddings---padding-main);
+  --_card---card--card-padding-small: var(--_paddings---padding-small);
+  --_card---card--card-padding-large: var(--_paddings---padding-large);
+  --_card---card--card-min-height: 24rem;
+  --container--main: calc(var(--site--max) * 1rem);
+  --container--medium: 70rem;
+  --container--full: calc(100vw - var(--site--margin) * 2);
+  --max-width--main: calc(var(--site--max) * 1rem);
+  --max-width--full: 100%;
+  --max-width--site-width: min(var(--max-width--main), 100vw);
+  --_typography---letter-spacing--normal: 0em;
+  --_typography---letter-spacing--wide: 0.05em;
+  --nav--radius: 0.25rem;
+  --nav--height: 4rem;
+  --nav--container: var(--container--main);
+  --nav--icon-thickness: 0.094rem;
+  --nav--hamburger-thickness: var(--nav--icon-thickness);
+  --radius--tiny: 0.125rem;
+  --radius--large: 1.5rem;
+  --site--width: 100rem;
+  --size--0-125rem: 0.125rem;
+  --size--0-25rem: 0.25rem;
+  --size--0-375rem: 0.375rem;
+  --size--0-5rem: 0.5rem;
+  --size--0-75rem: 0.75rem;
+  --size--1rem: 1rem;
+  --size--1-25rem: 1.25rem;
+  --size--1-5rem: 1.5rem;
+  --size--2-5rem: 2.5rem;
+  --size--3rem: 3rem;
+  --size--3-5rem: 3.5rem;
+  --size--4rem: 4rem;
+  --size--4-5rem: 4.5rem;
+  --size--5rem: 5rem;
+  --content-space--button-group-gap: var(--_spacing---space--4);
+  --nav--hamburger-gap: var(--_spacing---space--2);
+  --nav--nav-m: 0px;
+  --nav--hamburger-rotate: 45;
+  --nav--nav-bg-dark-mode: var(--swatch--dark);
+  --nav--nav-text-dark-mode: var(--swatch--light);
+  --nav--nav-banner-bg: var(--swatch--dark);
+  --nav--nav-banner-text: var(--swatch--light);
+  --size--5-5rem: 5.5rem;
+  --size--6rem: 6rem;
+  --size--6-5rem: 6.5rem;
+  --size--7rem: 7rem;
+  --size--7-5rem: 7.5rem;
+  --size--8rem: 8rem;
+  --size--8-5rem: 8.5rem;
+  --size--9rem: 9rem;
+  --size--9-5rem: 9.5rem;
+  --size--10rem: 10rem;
+  --size--11rem: 11rem;
+  --size--12rem: 12rem;
+  --size--14rem: 14rem;
+  --size--13rem: 13rem;
+  --size--15rem: 15rem;
+  --size--16rem: 16rem;
+  --_theme---selection--background: var(--swatch--dark);
+  --_theme---selection--text: white;
+  --_typography---line-height--1-5: 1.5;
+  --_typography---line-height--1-3: 1.3;
+  --_typography---line-height--0-8: 0.8;
+  --_typography---text-transform--none: var(--text-transform, none);
+  --_typography---text-transform--uppercase: uppercase;
+  --_typography---text-transform--capitalize: capitalize;
+  --_typography---text-transform--lowercase: lowercase;
+  --_text-style---letter-spacing: var(--_typography---letter-spacing--normal);
+  --value-location--custom-code: 0px;
+  --value-location--fluid-builder: 0px;
+  --_text-style---text-transform: var(--_typography---text-transform--none);
+  --_typography---primary-trim-top: 0.33em;
+  --_text-style---text-warp: pretty;
+  --_typography---primary-trim-bottom: 0.38px;
+  --_typography---primary-light: 300;
+  --_typography---primary-regular: 400;
+  --_typography---primary-medium: 500;
+  --_typography---primary-bold: 600;
+  --_typography---all-headings--heading-margin-top\<deleted\|variable-e1ca1b70-8d4b-3a58-4486-f621668e09ce\>: var(
+    --_spacing---space--4
+  );
+  --_typography---all-headings--heading-margin-bottom\<deleted\|variable-fe43f617-f6f7-5a67-e5cc-0068c155012c\>: var(
+    --_spacing---space--2
+  );
+  --_typography---all-headings--heading-font-family\<deleted\|variable-318d6203-a3ac-e279-8042-70974834804b\>: var(
+    --_typography---font--primary-family
+  );
+}

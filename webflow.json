@@ -1,5 +1,21 @@
 {
   "cloud": {
     "framework": "nextjs"
+  },
+  "telemetry": {
+    "global": {
+      "allowTelemetry": true,
+      "lastPrompted": 1779879279861,
+      "version": "1.23.0"
+    }
+  },
+  "siteId": "69b36b5add91b49325a05878",
+  "devlink-export": {
+    "rootDir": "./webflow",
+    "components": ".*",
+    "componentGroups": ".*",
+    "ts": false,
+    "cssScopes": true,
+    "relativeHrefRoot": "/"
   }
 }
